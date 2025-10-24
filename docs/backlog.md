@@ -24,10 +24,6 @@
 - Clear output formatting for cards and draw results.
 - Temporary interface before GUI implementation.
 
----
-
-## Later Sprint
-
 ### Scalable Multiplayer Design
 - Support for multiple players (up to 25).
 - Shared draw pool and synchronized game state.
@@ -38,3 +34,4 @@
 
 ### Product Vision Definition (PO)
 - Will be refined once the core game is functional.
+
