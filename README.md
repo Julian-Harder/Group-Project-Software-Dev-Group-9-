@@ -2,7 +2,7 @@
 
 Core logic is playable in scripts/tests; orchestration & CLI are pending.
 
-## What works
+## Working code
 
 * **Card generation** (5×5, FREE center, no duplicates) — `mini_bingo/card.py`
 * **Draw pool** (1..75, no repeats, seedable, peek) — `mini_bingo/draw.py`
