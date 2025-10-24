@@ -1,18 +1,19 @@
-"""Mini Bingo package.
+"""Mini Bingo – mid‑sprint public API.
 
-Exports the primary public API for use by UIs and tests.
+Expose just the core pieces that already exist (card, draw, rules).
+Game orchestration and CLI will be added in a later sprint.
 """
-from .card import Card, generate_player_card, display_player_card, is_valid_card
-from .draw import DrawPool
-from .rules import (
-    BingoResult,
-    WinLine,
-    mark_number,
-    winning_lines,
-    check_for_bingo,
-    format_bingo_announcement,
+from .card import (
+    Card,
+    generate_player_card,
+    display_player_card,
+    is_valid_card,
+    DEFAULT_SIZE,
+    CENTER,
+    COLUMN_RANGES,
 )
-from .game import Game, Player
+from .draw import DrawPool
+from .rules import BingoResult, WinLine, mark_number, winning_lines, check_for_bingo
 
 __all__ = [
     # card
@@ -20,6 +21,9 @@ __all__ = [
     "generate_player_card",
     "display_player_card",
     "is_valid_card",
+    "DEFAULT_SIZE",
+    "CENTER",
+    "COLUMN_RANGES",
     # draw
     "DrawPool",
     # rules
@@ -28,10 +32,6 @@ __all__ = [
     "mark_number",
     "winning_lines",
     "check_for_bingo",
-    "format_bingo_announcement",
-    # game
-    "Game",
-    "Player",
 ]
 
-__version__ = "0.1.0"
+__version__ = "0.0.1-dev"
