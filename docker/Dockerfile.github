@@ -1,0 +1,16 @@
+# docker/Dockerfile.github
+# Lab-style example: clone the PUBLIC Mini Bingo repo inside the image
+
+FROM alpine:latest
+
+# 1) Install git in this minimal image
+RUN apk add --no-cache git
+
+# 2) Clone your public GitHub repo into /app/repo
+RUN git clone https://github.com/Julian-Harder/Group-Project-Software-Dev-Group-9-.git /app/repo
+
+# 3) Workdir = cloned repo
+WORKDIR /app/repo
+
+# 4) Default command: list files recursively to prove the clone worked
+CMD ["ls", "-R"]

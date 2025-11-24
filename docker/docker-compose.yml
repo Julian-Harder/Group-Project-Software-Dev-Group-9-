@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  app:
+    # Build the image using Dockerfile.app
+    build:
+      context: ..                 # build context = repo root
+      dockerfile: docker/Dockerfile.app
+
+    # Example environment variables
+    environment:
+      APP_ENV: development
+      APP_LOG_LEVEL: INFO
+
+    # Dev volume: map project folder on your Mac -> /app in the container
+    volumes:
+      - ..:/app
+
+    # Make it interactive for the CLI game
+    stdin_open: true   # like -i
+    tty: true          # like -t
