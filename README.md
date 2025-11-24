@@ -17,7 +17,7 @@
 # 2. Clone the repository
 # ------------------------------------------------------------
 
-# Replace <REPO_URL> with the actual GitHub URL of this project.
+# Use GitHub URL of this project.
 git clone https://github.com/Julian-Harder/Group-Project-Software-Dev-Group-9-
 cd Group-Project-Software-Dev-Group-9-
 
