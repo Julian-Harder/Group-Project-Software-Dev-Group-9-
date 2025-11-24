@@ -7,7 +7,6 @@ FROM python:3.12-slim
 WORKDIR /app
 
 # 1.5) Make src/ visible as a Python package root
-# This lets "from mini_bingo import ..." work in pytest
 ENV PYTHONPATH=/app/src
 
 # 2) Copy project metadata (for reference / future tools)
