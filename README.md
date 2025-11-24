@@ -1,43 +1,99 @@
-# Mini Bingo – Mid‑Sprint Snapshot
+# ============================================================
+# How to Run the Bingo Game in Your Terminal
+# ============================================================
 
-Core logic is playable in scripts/tests; orchestration & CLI are pending.
+# ------------------------------------------------------------
+# 1. Prerequisites
+# ------------------------------------------------------------
+# - Python 3 installed (check with:)
+#     python --version      # or: python3 --version
+# - Git installed
+#
+# On Windows, you may need to use `py` instead of `python`
+# and run the commands in PowerShell instead of bash.
+# ------------------------------------------------------------
 
-## Working code
+# ------------------------------------------------------------
+# 2. Clone the repository
+# ------------------------------------------------------------
 
-* **Card generation** (5×5, FREE center, no duplicates) — `mini_bingo/card.py`
-* **Draw pool** (1..75, no repeats, seedable, peek) — `mini_bingo/draw.py`
-* **Rules** (marking + row/col/diagonal detection) — `mini_bingo/rules.py`
+# Replace <REPO_URL> with the actual GitHub URL of this project.
+git clone https://github.com/Julian-Harder/Group-Project-Software-Dev-Group-9-
+cd Group-Project-Software-Dev-Group-9-
 
-## Try it in a quick script
+# ------------------------------------------------------------
+# 3. Create and activate a virtual environment
+# ------------------------------------------------------------
 
-```python
-from mini_bingo.card import generate_player_card
-from mini_bingo.draw import DrawPool
-from mini_bingo.rules import mark_number, check_for_bingo
+# --- macOS / Linux ---
+python -m venv .venv
+# Activate the virtual environment:
+source .venv/bin/activate
 
-card = generate_player_card(seed=7)
-pool = DrawPool(seed=7)
-print(card.display())
+# --- Windows (PowerShell) equivalent ---
+# py -m venv .venv
+# .\.venv\Scripts\Activate.ps1
 
-while not pool.empty:
-    n = pool.draw()
-    if mark_number(card, n):
-        res = check_for_bingo(card)
-        if res.has_bingo:
-            print("BINGO!", [(w.kind, w.index) for w in res.lines])
-            break
-```
+# ------------------------------------------------------------
+# 4. Install the project
+# ------------------------------------------------------------
 
-## Tests
+# From the project root:
+python -m pip install --upgrade pip
+python -m pip install -e .
 
-Run the subset that exists so far:
+# This installs the `mini_bingo` package from the src/ directory in editable mode.
 
-```bash
-pytest mid-sprint/tests -q
-```
+# ------------------------------------------------------------
+# 5. Run the tests
+# ------------------------------------------------------------
 
-## Next up
+python -m pip install pytest
+python -m pytest
 
-* Game orchestration (multi‑player, announcements, snapshots)
-* CLI (`python -m mini_bingo`) and packaging
-* End‑to‑end tests and docs polish
+# All tests should pass. If they do, the core logic of the game is working correctly.
+
+# ------------------------------------------------------------
+# 6. Start the game
+# ------------------------------------------------------------
+
+# Run the game module:
+python -m mini_bingo
+
+# This launches the interactive game with default settings (1 player, random seed).
+
+# ------------------------------------------------------------
+# 7. Command-line options
+# ------------------------------------------------------------
+# You can customize the game with the following options:
+#   -p N, --players N        number of players
+#   --seed N                 master seed for reproducible games
+#   --names NAME1 NAME2 ...  names for each player (must match number of players)
+#   --auto                   automatically draw numbers until the first bingo
+#                            (or all numbers are drawn), then exit
+
+# --- Examples ---
+
+# 3 players, fixed seed:
+python -m mini_bingo --players 3 --seed 42
+
+# 2 named players, auto-draw until first winner:
+python -m mini_bingo --players 2 --names Alice Bob --auto
+
+# Show help:
+python -m mini_bingo --help
+
+# ------------------------------------------------------------
+# 8. In-game controls (interactive mode)
+# ------------------------------------------------------------
+# When you run without --auto, you enter an interactive menu.
+# The main commands are:
+#   D  - draw the next number
+#   P  - peek at the next number (without drawing it)
+#   S  - show current status (called numbers, winners, remaining numbers)
+#   C  - show all player cards
+#   A  - auto-draw until the first bingo (or no numbers left)
+#   Q  - quit the game
+#
+# Follow the prompts shown in the terminal to control the game.
+# ------------------------------------------------------------
